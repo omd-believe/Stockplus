@@ -20,7 +20,7 @@ services:
   app:
     build:
       context: .
-      dockerfile: backend/Dockerfile
+      dockerfile: Dockerfile
     container_name: stockpulse-app
     ports:
       - "8080:8080"

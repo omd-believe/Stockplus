@@ -1,18 +1,18 @@
-# ── Stage 1: Build Backend JAR ───────────────────────────────────────────────
+# ── Stage 1: Build Backend JAR from Root Context ─────────────────────────────
 FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 
-# Copy Maven wrapper and pom.xml first for layer caching
-COPY pom.xml .
-COPY .mvn/ .mvn/
-COPY mvnw .
+# Copy Maven wrapper and pom.xml from backend
+COPY backend/pom.xml .
+COPY backend/.mvn/ .mvn/
+COPY backend/mvnw .
 RUN chmod +x mvnw
 
-# Download dependencies (skip failure if any dynamic plugins exist)
+# Download dependencies
 RUN ./mvnw dependency:go-offline -B -q || true
 
-# Copy source code and package application
-COPY src/ src/
+# Copy backend source code and build production jar
+COPY backend/src/ src/
 RUN ./mvnw clean package -DskipTests -B -q
 
 # ── Stage 2: Production Runtime ──────────────────────────────────────────────
