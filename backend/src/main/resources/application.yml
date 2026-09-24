@@ -1,0 +1,65 @@
+spring:
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/stockpulse}
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:omd}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: validate          # Flyway owns the schema; Hibernate only validates
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: false
+
+server:
+  port: ${PORT:8080}
+  servlet:
+    context-path: /
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    operationsSorter: method
+  api-docs:
+    path: /v3/api-docs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
+stockpulse:
+  jwt:
+    secret: ${JWT_SECRET:stockpulse-super-secret-key-for-development-only-32chars}
+    expiry-minutes: ${JWT_EXPIRY_MINUTES:60}
+  admin:
+    email: ${ADMIN_EMAIL:admin@stockpulse.com}
+    password: ${ADMIN_PASSWORD:Admin@123456}
+  risk:
+    single-stock-limit-pct: 40
+    sector-limit-pct: 60
+    medium-risk-top-holding-pct: 30
+    high-risk-top-holding-pct: 50
+  market:
+    impact-enabled: ${MARKET_IMPACT_ENABLED:true}
+    depth-inr: ${MARKET_DEPTH_INR:10000000}
+    max-impact-pct: ${MARKET_MAX_IMPACT_PCT:2.0}
+    min-price: ${MARKET_MIN_PRICE:1.00}
+    drift:
+      enabled: ${MARKET_DRIFT_ENABLED:true}
+      interval-seconds: ${MARKET_DRIFT_INTERVAL_SECONDS:10}
+      volatility-pct: ${MARKET_DRIFT_VOLATILITY_PCT:0.10}
+      mean-reversion: ${MARKET_DRIFT_MEAN_REVERSION:0.02}
+

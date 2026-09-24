@@ -1,0 +1,96 @@
+:root {
+  /* Default light theme: Crisp Swiss / High-End Fintech Monochrome */
+  --bg: #F8F9FA;
+  --surface: #FFFFFF;
+  --surface-2: #F1F3F5;
+  --ink: #0A0A0C;
+  --ink-2: #495057;
+  --ink-3: #868E96;
+  --ink-inverted: #FFFFFF;
+  --line: #E9ECEF;
+  --line-strong: #CED4DA;
+  --fill: #E9ECEF;
+  --gain: #059669;       /* Deep Emerald */
+  --loss: #E11D48;       /* Refined Rose / Crimson */
+  --pnl-gain: var(--gain);
+  --pnl-loss: var(--loss);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+
+  /* Typography */
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --text-xs: 0.75rem;          /* 12px */
+  --text-sm: 0.875rem;         /* 14px */
+  --text-base: 1rem;           /* 16px */
+  --text-lg: 1.125rem;         /* 18px */
+  --text-xl: 1.5rem;           /* 24px */
+  --text-2xl: clamp(1.5rem, 4vw, 2rem);    /* 24px - 32px */
+  --text-display: clamp(2rem, 5vw, 3rem);  /* 32px - 48px */
+
+  /* Radii */
+  --radius-sm: 8px;            /* controls */
+  --radius-md: 16px;           /* panels */
+  --radius-pill: 999px;        /* chips, segmented controls */
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* System dark preference when no manual preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #000000;            /* Pitch Black OLED background */
+    --surface: #0C0C0E;       /* Elevated dark slate surface */
+    --surface-2: #141417;     /* Secondary card surface */
+    --ink: #FFFFFF;           /* Crisp pure white */
+    --ink-2: #A1A1AA;         /* Cool silver-grey */
+    --ink-3: #63636E;         /* Subtle gunmetal grey */
+    --ink-inverted: #000000;  /* Pure black contrast text */
+    --line: #1F1F24;          /* Hairline border */
+    --line-strong: #2F2F38;   /* Strong border */
+    --fill: #1A1A1F;          /* Button/pill neutral fill */
+    --gain: #10B981;          /* Vivid Emerald */
+    --loss: #F43F5E;          /* Electric Rose / Coral */
+    --pnl-gain: var(--gain);
+    --pnl-loss: var(--loss);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 12px 32px rgba(0, 0, 0, 0.9);
+  }
+}
+
+/* Explicit data-theme dark */
+[data-theme="dark"] {
+  --bg: #000000;              /* Pitch Black OLED background */
+  --surface: #0C0C0E;         /* Elevated dark slate surface */
+  --surface-2: #141417;       /* Secondary card surface */
+  --ink: #FFFFFF;             /* Crisp pure white */
+  --ink-2: #A1A1AA;           /* Cool silver-grey */
+  --ink-3: #63636E;           /* Subtle gunmetal grey */
+  --ink-inverted: #000000;    /* Pure black contrast text */
+  --line: #1F1F24;            /* Hairline border */
+  --line-strong: #2F2F38;     /* Strong border */
+  --fill: #1A1A1F;            /* Button/pill neutral fill */
+  --gain: #10B981;            /* Vivid Emerald */
+  --loss: #F43F5E;            /* Electric Rose / Coral */
+  --pnl-gain: var(--gain);
+  --pnl-loss: var(--loss);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 12px 32px rgba(0, 0, 0, 0.9);
+}
+
+/* Explicit data-theme light */
+[data-theme="light"] {
+  --bg: #F8F9FA;
+  --surface: #FFFFFF;
+  --surface-2: #F1F3F5;
+  --ink: #0A0A0C;
+  --ink-2: #495057;
+  --ink-3: #868E96;
+  --ink-inverted: #FFFFFF;
+  --line: #E9ECEF;
+  --line-strong: #CED4DA;
+  --fill: #E9ECEF;
+  --gain: #059669;
+  --loss: #E11D48;
+  --pnl-gain: var(--gain);
+  --pnl-loss: var(--loss);
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.06);
+}
